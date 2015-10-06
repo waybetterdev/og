@@ -15,3 +15,21 @@ og_ui.group.unsubscribe:
     entity_id: 'NULL'
   requirements:
     _permission: 'og_ui_user_access_group'
+    
+og_ui.group.administer.people:
+  path: '/group/{group_type}/{group_id}/admin/people'
+  defaults:
+    _controller: '\Drupal\og_ui\Plugin\Field\FieldFormatter\OgGroupSubscribe::unsubscribe'
+    _title: 'Leave group'
+    entity_id: 'NULL'
+  requirements:
+    _permission: 'og_ui_user_access_group'
+    
+og_ui.group.administer.people.add_user:
+  path: '/group/{group_type}/{group_id}/admin/people/add-user'
+  defaults:
+    _form: '\Drupal\og_ui\Plugin\Form\FieldFormatter\OgGroupSubscribe::unsubscribe'
+    _title: 'Leave group'
+    entity_id: 'NULL'
+  requirements:
+    _permission: 'og_ui_user_access_group'
