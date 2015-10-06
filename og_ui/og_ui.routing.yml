@@ -5,7 +5,7 @@ og_ui.group.subscribe:
     _title: 'Join group'
     entity_id: 'NULL'
   requirements:
-    _access: 'access content'
+    permission: 'authenticated user'
     
 og_ui.group.unsubscribe:
   path: '/group/{group_type}/{group_id}/unsubscribe'
@@ -14,4 +14,4 @@ og_ui.group.unsubscribe:
     _title: 'Leave group'
     entity_id: 'NULL'
   requirements:
-    _permission: 'access content'
+    _permission: 'og_ui_user_access_group'
