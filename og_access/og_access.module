@@ -91,7 +91,7 @@ function og_access_node_access_records(\Drupal\node\NodeInterface $node) {
   $content_access = !empty($wrapper->{OG_CONTENT_ACCESS_FIELD}) ? $wrapper->{OG_CONTENT_ACCESS_FIELD}->value() : OG_CONTENT_ACCESS_DEFAULT;
   switch ($content_access) {
     case OG_CONTENT_ACCESS_DEFAULT:
-      if (!$entity_groups = og_get_entity_groups('node', $node)) {
+      if (!$entity_groups) {
         break;
       }
 
