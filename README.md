@@ -1,4 +1,4 @@
-# OG 8.x-1.1
+# OG 8.x-1.0
 https://www.drupal.org/project/og
 
 Forked OG to start converting submodules to 8.x
