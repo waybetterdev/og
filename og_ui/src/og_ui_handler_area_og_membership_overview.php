@@ -1,8 +1,17 @@
 <?php
 namespace Drupal\og_ui;
 
+/** 
+ * @FIXME
+ * @TODO
+ * theme() has been renamed to _theme() and should NEVER be called directly.
+ * Calling _theme() directly can alter the expected output and potentially
+ * introduce security issues (see https://www.drupal.org/node/2195739). You
+ * should use renderable arrays instead.
+ */
+
 /**
- * Overview of the group memberships (e.g. group manager, total memebrs).
+ * Overview of the group memberships (e.g. group manager, total members).
  */
 class og_ui_handler_area_og_membership_overview extends views_handler_area {
 
@@ -85,15 +94,8 @@ class og_ui_handler_area_og_membership_overview extends views_handler_area {
     if (!empty($group->uid) && $this->options['manager']) {
       // Group manager.
       $account = \Drupal::entityManager()->getStorage('user')->load($group->uid);
-      // @FIXME
-// theme() has been renamed to _theme() and should NEVER be called directly.
-// Calling _theme() directly can alter the expected output and potentially
-// introduce security issues (see https://www.drupal.org/node/2195739). You
-// should use renderable arrays instead.
-// 
-// 
-// @see https://www.drupal.org/node/2195739
-// $items[] = array('data' => t('Group manager: !manager', array('!manager' => theme('username', array('account' => $account)))));
+      // @toto change _theme() to array('#theme' => 'username'); $markup .= drupal_render($theme);
+      $items[] = array('data' => t('Group manager: !manager', array('!manager' => _theme('username', array('account' => $account)))));
 
     }
 
@@ -140,16 +142,8 @@ class og_ui_handler_area_og_membership_overview extends views_handler_area {
 
       $items[] = array('data' => t('Total content: @count', array('@count' => $count)));
     }
-
-    // @FIXME
-// theme() has been renamed to _theme() and should NEVER be called directly.
-// Calling _theme() directly can alter the expected output and potentially
-// introduce security issues (see https://www.drupal.org/node/2195739). You
-// should use renderable arrays instead.
-// 
-// 
-// @see https://www.drupal.org/node/2195739
-// return theme('item_list', array('items' => $items, 'title' => t('Group overview')));
+// @TODO change _theme() to array('#theme' => 'item_list'); $markup .= drupal_render($item_list);
+return _theme('item_list', array('items' => $items, 'title' => t('Group overview')));
 
   }
 }

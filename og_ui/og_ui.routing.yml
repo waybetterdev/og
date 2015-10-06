@@ -1,0 +1,17 @@
+og_ui.group.subscribe:
+  path: '/group/{group_type}/{group_id}/subscribe'
+  defaults:
+    _controller: '\Drupal\og_ui\Plugin\Field\FieldFormatter\OgGroupSubscribe::subscribe'
+    _title: 'Join group'
+    entity_id: 'NULL'
+  requirements:
+    _access: 'access content'
+    
+og_ui.group.unsubscribe:
+  path: '/group/{group_type}/{group_id}/unsubscribe'
+  defaults:
+    _controller: '\Drupal\og_ui\Plugin\Field\FieldFormatter\OgGroupSubscribe::unsubscribe'
+    _title: 'Leave group'
+    entity_id: 'NULL'
+  requirements:
+    _permission: 'access content'

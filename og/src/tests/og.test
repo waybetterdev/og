@@ -896,7 +896,7 @@ class OgMigrate7000TestCase extends UpgradePathTestCase {
       'OgMigrateContent',
     );
 
-    // FIXME: migrate_flush_caches() crashes, so we register manually.
+    // migrate_flush_caches() crashes, so we register manually.
     foreach ($class_names as $class_name) {
       MigrationBase::registerMigration($class_name);
     }
@@ -1273,10 +1273,12 @@ class OgMigrate7200TestCase extends UpdatePathTestCase {
 
     parent::setUp();
 
-    // FIXME: Since the DB dump holds group-audience field instances,
-    // we need to delete them, otherwise this will create notices in
-    // resulting from OG no longer defining hook_field_info().
-    // Deleting using field_delete_instance() didn't work.
+    /** 
+     * Since the DB dump holds group-audience field instances,
+     * we need to delete them, otherwise this will create notices in
+     * resulting from OG no longer defining hook_field_info().
+     * Deleting using field_delete_instance() didn't work.
+     */
     db_delete('field_config_instance')
       ->condition('field_name', 'group_audience')
       ->execute();
@@ -1294,7 +1296,7 @@ class OgMigrate7200TestCase extends UpdatePathTestCase {
 
     module_enable(array('og', 'migrate'));
 
-    // FIXME: migrate_flush_caches() crashes, so we register manually.
+    // migrate_flush_caches() crashes, so we register manually.
     MigrationBase::registerMigration('OgMigrateMembership');
     MigrationBase::registerMigration('OgMigrateRoles');
     MigrationBase::registerMigration('OgMigrateUserRoles');
