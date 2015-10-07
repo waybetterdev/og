@@ -14,7 +14,7 @@ og_ui.group.unsubscribe:
     _title: 'Leave group'
     entity_id: 'NULL'
   requirements:
-    _permission: 'og_ui_user_access_group'
+    _permission: 'authenticated user'
     
 og_ui.group.administer.people:
   path: '/group/{group_type}/{group_id}/admin/people'
